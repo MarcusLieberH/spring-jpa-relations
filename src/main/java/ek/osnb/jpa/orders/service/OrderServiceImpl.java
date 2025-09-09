@@ -47,6 +47,12 @@ public class OrderServiceImpl implements OrderService {
             Order updatedOrder = existingOrder.get();
             updatedOrder.setOrderDate(order.getOrderDate());
             updatedOrder.setStatus(order.getStatus());
+
+            // Clear existing order lines and add new ones
+            updatedOrder.clearOrderLines();
+            for (var line : order.getOrderLines()) {
+                updatedOrder.addOrderLine(line);
+            }
             return orderRepository.save(updatedOrder);
         }
         throw new RuntimeException("Order not found with id: " + id);
