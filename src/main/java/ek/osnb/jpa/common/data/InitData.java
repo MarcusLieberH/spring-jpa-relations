@@ -34,12 +34,12 @@ public class InitData implements CommandLineRunner {
         OrderLine orderLine4 = new OrderLine("Product D", 15.0, 3);
         OrderLine orderLine5 = new OrderLine("Product E", 25.0, 4);
 
-        // Etabler relationship
-        orderLine1.setOrder(order1);
-        orderLine2.setOrder(order1);
-        orderLine3.setOrder(order2);
-        orderLine4.setOrder(order2);
-        orderLine5.setOrder(order2);
+        // Brug addOrderLine helper method i stedet
+        order1.addOrderLine(orderLine1);
+        order1.addOrderLine(orderLine2);
+        order2.addOrderLine(orderLine3);
+        order2.addOrderLine(orderLine4);
+        order2.addOrderLine(orderLine5);
 
         orderLineRepository.saveAll(List.of(orderLine1, orderLine2, orderLine3, orderLine4, orderLine5));
     }
