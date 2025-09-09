@@ -10,7 +10,7 @@ public class OrderLine extends BaseEntity {
     private String product;
     private double unitPrice;
     private int quantity;
-    @JsonBackReference
+
     @ManyToOne
     private Order order;
 
